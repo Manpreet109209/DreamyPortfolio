@@ -1,4 +1,5 @@
 ✨ Overview
+Hosted on https://dreamyportfolio.netlify.app/
 
 This project is my personal developer portfolio, designed as an interactive desktop-like interface rather than a traditional static website.
 It focuses on component-driven architecture, clean UI systems, and intentional motion, not visual noise.
