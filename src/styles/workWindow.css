@@ -1,0 +1,285 @@
+/* Base Window Shell (Shared with every window) */
+
+.work-window {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+  background-color: #d5c5ff;
+}
+
+/* Top Bar */
+.work-window__topbar {
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 8px 16px;
+  background-color: #fbd0ff;
+  display: flex;
+  align-items: center;
+}
+
+.work-window__title {
+  margin: 0;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 600;
+  color: #333;
+  line-height: 1.2;
+}
+
+/* Content Area */
+.work-window__content {
+  flex: 1;
+  background-color: #ebafff;
+  padding: clamp(16px, 4vw, 32px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  text-align: center;
+}
+
+/* Projects Grid */
+/* ───── Container ───── */
+.work-window__projects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(24px, 5vw, 48px);
+  padding: 0 clamp(16px, 4vw, 32px);
+  margin-top: 20px;
+}
+
+/* ───── Project Wrapper ───── */
+.projectWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.projectWrap:has(.project-popup) {
+  transform: translateY(-22px);
+}
+
+.projectWrap:has(.project-popup) .project-card {
+  transform: translateY(-2px) scale(0.95);
+}
+
+/* ───── Project Card ───── */
+.project-card {
+  width: clamp(180px, 16vw, 220px);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.35s ease, box-shadow 0.35s ease, filter 0.35s ease;
+  will-change: transform;
+}
+
+.project-card:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 12px rgba(93, 0, 255, 0.3));
+}
+
+/* ───── Card Media ───── */
+.project-card__media img {
+  width: 100%;
+  height: clamp(120px, 15vw, 140px);
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.project-card__title {
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 600;
+  text-align: center;
+  color: #222;
+}
+
+/* ───── Popup ───── */
+.project-popup {
+  width: 100%;
+  max-width: 240px;
+  margin-top: 14px;
+  padding: 16px 20px;
+  background: #ffffff;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: expandDown 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project-popup p {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #555;
+}
+
+.project-popup a {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #ab87fa, #7f5efb);
+  padding: 6px 10px;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+}
+
+.project-popup a:hover {
+  color: #ab87fa;
+  background: rgba(171, 135, 250, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(171, 135, 250, 0.25);
+}
+
+/* ───── Tech Stack Chips ───── */
+.project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.project-card__tech span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #fbd0ff, #e6c9ff);
+  color: #5d2c7a;
+  box-shadow: 0 2px 8px rgba(93, 0, 255, 0.15);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card__tech span:hover {
+  transform: translateY(-2px) scale(1.05);
+}
+
+ /* Accepting work offers */
+.work-window__headline_WorkOffer {
+  font-size: clamp(22px, 4vw, 30px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+
+  background: linear-gradient(
+    90deg,
+    #5a1f1f,
+    #c06c84,
+    #ffb4c8,
+    #c06c84,
+    #5a1f1f
+  );
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+
+  text-shadow:
+    0 1px 2px rgba(90, 31, 31, 0.4);
+
+  animation:
+    workOfferShimmer 5s ease-in-out infinite,
+    workOfferFloat 3.5s ease-in-out infinite;
+}
+
+/* Shared Interactive Element SVG */
+.work-window__messageMe {
+  width: min(60vw, 300px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 60px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  will-change: transform;
+}
+
+.work-window__messageMe:hover {
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 20px rgba(93, 0, 255, 0.4));
+}
+
+.work-window__messageMe.is-bouncing {
+  will-change: transform;
+  animation: work-bounce 0.6s ease-in-out;
+}
+
+/* animations */
+@keyframes work-bounce {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes expandDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* slow color flow */
+@keyframes workOfferShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* barely-noticeable vertical life */
+@keyframes workOfferFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .project-card {
+    width: 90%;
+  }
+  .project-card__media img {
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .work-window__projects {
+    gap: 16px;
+    padding: 0 16px;
+  }
+  .project-card__title {
+    font-size: 14px;
+  }
+  .project-popup {
+    max-width: 95%;
+    padding: 14px 16px;
+  }
+}
