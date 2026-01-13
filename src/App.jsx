@@ -1,7 +1,7 @@
 /* src/App.jsx */
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Home from "./Home";
+import Home from "./home.jsx";
 import "./App.css";
 
 export default function App() {
