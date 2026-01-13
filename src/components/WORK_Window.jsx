@@ -24,7 +24,7 @@ const PROJECTS = [
       "flexbox, clamp, transitions",
     ],
     thumbnail: PortfolioThumbnail,
-    link: "https://github.com/Manpreet109209/User-Management-System",
+    link: "https://github.com/Manpreet109209/DreamyPortfolio",
   },
   {
     title: "User Management System",
