@@ -92,7 +92,7 @@ const faqs = [
     ),
   },
   {
-    q: "❓ Why should someone take you seriously as a 17-year-old?",
+    q: "❓ Why should someone take you seriously as a 16-year-old?",
     a: (
       <>
         Because I focus on understanding systems, 
