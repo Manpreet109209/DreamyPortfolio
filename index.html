@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manpreet Singh - Portfolio</title>
+
+    <!-- Critical loader CSS (must be inline) -->
+ <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: #fffdfb;
+  }
+
+  #initial-loader {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fdb7ff;
+    z-index: 9999;
+  }
+
+  .loader-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* Cute bouncing dots */
+  .dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #6a3fbf;
+    animation: bounce 0.9s infinite ease-in-out;
+  }
+
+  .dot:nth-child(2) {
+    animation-delay: 0.15s;
+    background: #9a7cff;
+  }
+
+  .dot:nth-child(3) {
+    animation-delay: 0.3s;
+    background: #ff72e3;
+  }
+
+  @keyframes bounce {
+    0%, 80%, 100% {
+      transform: translateY(0);
+      opacity: 0.6;
+    }
+    40% {
+      transform: translateY(-10px);
+      opacity: 1;
+    }
+  }
+
+  /* Soft caption */
+  .loader-text {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    color: #4b2c6f;
+    opacity: 0.85;
+    animation: fadePulse 1.6s ease-in-out infinite;
+  }
+
+  @keyframes fadePulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+</style>
+  </head>
+
+  <body>
+    <!-- Loader shown BEFORE React loads -->
+  <div id="initial-loader">
+    <div class="loader-wrap">
+      <div class="dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+      <div class="loader-text">loading…</div>
+    </div>
+  </div>
+
+    <!-- React root -->
+    <div id="root"></div>
+
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      window.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+    </script>
+  </body>
+</html>
