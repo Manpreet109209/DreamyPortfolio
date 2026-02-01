@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import emailImage from "../assets/email.png";
+import emailImage from "../assets/email.jpeg";
 import "../styles/contactWindow.css";
 const EMAIL_CONFIG = {
   to: "piewhispers@gmail.com",

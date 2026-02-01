@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
 import messageMeLottie from "../assets/butterfly.json";
-import usmThumbnail from "../assets/projectPngs/UMS/preview.png";
-import PortfolioThumbnail from "../assets/projectPngs/Portfolio/dreamy_CustomBuiltPortfolio.png";
+import usmThumbnail from "../assets/projectPngs/UMS/preview.jpeg";
+import PortfolioThumbnail from "../assets/projectPngs/Portfolio/dreamy_CustomBuiltPortfolio.jpeg";
 import "../styles/workWindow.css";
 
 const EMAIL_CONFIG = {

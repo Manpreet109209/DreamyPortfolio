@@ -1,7 +1,7 @@
 import "../styles/aboutWindow.css";
 import * as React from "react";
 import { Player } from "@lottiefiles/react-lottie-player";
-import PiesQueen from "../assets/Pies-Queen.png";
+import PiesQueen from "../assets/Picture_about.png";
 import pinkFlyLottie from "../assets/pink-fly.json";
 
 const AboutWindow = () => {

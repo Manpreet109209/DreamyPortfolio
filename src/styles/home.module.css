@@ -526,7 +526,7 @@
   top: 50%;
   left: 30%;
 
-  background: url("/wallpapers/backgroundd.png") no-repeat center;
+  background: url("/wallpapers/background.jpeg") no-repeat center;
   background-size: cover;
 
   transform: translate(-50%, -50%) rotate(270deg);
