@@ -2,10 +2,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "../styles/home.module.css";
 // import flowersTop from "../assets/flowers-top.png";
-import fairy from "../assets/fairy.png";
-import crown from "../assets/crown.png";
-import flowersBottom from "../assets/flowers-bottom.png";
-import fairyQueen from "../assets/fairyQueen.png";
+// import fairy from "../assets/fairy.png";
+// import crown from "../assets/crown.png";
+// import flowersBottom from "../assets/flowers-bottom.png";
+// import fairyQueen from "../assets/fairyQueen.png";
 
 /**
  * Wallpaper
@@ -80,7 +80,7 @@ export default function Wallpaper() {
           className={styles.glassFlowersTop}
         /> */}
 
-        <img
+        {/* <img
           src={flowersBottom}
           alt=""
           aria-hidden="true"
@@ -111,7 +111,7 @@ export default function Wallpaper() {
           alt=""
           aria-hidden="true"
           className={styles.glassFairyQueen}
-        />
+        /> */}
       </div>
     </div>
   );

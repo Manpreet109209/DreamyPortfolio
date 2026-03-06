@@ -1,7 +1,7 @@
 /* src/styles/home.module.css - optimized scoped styles for Home + components */
 .root {
   width: 100vw;
-  height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
   position: relative;
   background: black;
@@ -28,92 +28,25 @@
   will-change: opacity;
 }
 
-/* Center glass overlay */
-.centerGlass {
-  position: relative;
-  top: 30%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40vw;
-  height: 36vh;
-  border-radius: 2vw;
-  z-index: 3;
-  background: rgba(255, 100, 201, 0.17);
-  backdrop-filter: blur(10px);
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65),
-              inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-}
-
-/* Fairies */
-.glassFairy,
-.FairyCrown,
-.glassFairyQueen,
-.FairyQueenCrown {
-  position: absolute;
-  pointer-events: none;
-  opacity: 0.85;
-  transform: translateX(50%);
-}
-
-.glassFairy {
-  bottom: 32%;
-  left: 35%;
-  width: 40%;
-  animation: floatFairy 7.5s ease-in-out infinite;
-}
-
-.FairyCrown {
-  bottom: 60%;
-  left: 35%;
-  width: 25%;
-  animation: floatFairy 7.5s ease-in-out infinite;
-}
-
-.glassFairyQueen {
-  bottom: 38%;
-  left: 65%;
-  width: 33%;
-  animation: floatFairy 7s ease-in-out infinite;
-}
-
-.FairyQueenCrown {
-  bottom: 64%;
-  left: 65%;
-  width: 25%;
-  animation: floatFairy 7s ease-in-out infinite;
-}
-
-/* Bottom flowers */
-.glassFlowersBottom {
-  position: absolute;
-  bottom: -8%;
-  left: 50%;
-  width: 120%;
-  transform: translateX(-50%);
-  pointer-events: none;
-  opacity: 0.85;
-  animation: floatGlassBottom 9s ease-in-out infinite;
-}
-
-.glassFlowersTop,
-.glassFlowersBottom,
-.glassFairy {
-  filter: blur(0.3px);
-}
-
 /* Cat button */
 .catButton {
   position: absolute;
-  top: 1vw;
-  left: 1vw;
-  width: 20vw;
+
+  top: clamp(10px,2vh,30px);
+  left: clamp(10px,2vw,30px);
+
+  width: clamp(120px,20vw,260px);
+
   height: auto;
+
   z-index: 20;
+
   border: none;
   background: transparent;
+
   cursor: pointer;
-  transition: transform 0.4s ease, filter 0.2s ease;
+
+  transition: transform .4s ease, filter .2s ease;
 }
 
 .catButton:focus-visible {
@@ -131,37 +64,63 @@
 /* Desktop icon row (production) */
 .iconRow {
   position: absolute;
-  top: 50vh;
+  top: clamp(260px, 42vh, 520px);
   left: 50%;
   transform: translateX(-50%);
+
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
   justify-content: center;
-  gap: clamp(20px, 2vw, 64px);
+
+  gap: clamp(36px, 2.5vmin, 64px);
+
   z-index: 10;
 }
 
-/* Each icon (formerly iconWrap) */
+/* icon wrapper */
 .iconRow > * {
-  width: clamp(50px, 5.5vw, 80px);
-  height: clamp(50px, 5.5vw, 96px);
+  position: relative;
+
+  width: clamp(60px, 6vmin, 90px);
+  height: clamp(60px, 6vmin, 100px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
 
   transform-origin: center;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  transition: transform .4s ease, filter .4s ease;
 }
 
-/* Hover effect stays identical */
+/* cute glow background WITHOUT affecting layout */
+/* cute glass bubble background */
+.iconRow > *::before {
+  content: "";
+
+  position: absolute;
+  inset: -10px;
+
+  border-radius: 20px;
+
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6), transparent 40%),
+    radial-gradient(circle at 70% 75%, rgba(255,255,255,0.25), transparent 50%),
+    rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(6px);
+
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.2),
+    inset 0 0 0 1px rgba(255,255,255,0.25);
+
+  z-index: -1;
+}
+
+/* hover */
 .iconRow > *:hover {
   transform: scale(1.25);
-  filter: drop-shadow(0 0 10px rgba(93, 0, 255, 0.4));
 }
 
-/* Icon button */
 .iconButton {
   width: 100%;
   height: 100%;
@@ -175,22 +134,22 @@
   cursor: pointer;
 }
 
-/* Lottie / icon scaling */
+/* Lottie scaling */
 .iconButton > * {
   transform: scale(var(--icon-scale, 2));
   transition: transform 0.4s ease;
 }
 
-/* Label */
 .iconLabel {
   margin-top: -0.6em;
 
-  font-size: clamp(12px, 1.1vw, 16px);
+  font-size: clamp(12px, 1.2vmin, 16px);
   line-height: 1.2;
 
   color: #fff;
   text-shadow: 0 0 0.1vw #b700ff;
-  font-family: "Anime Ace", "Comic Sans MS", cursive;
+
+  font-family: "Anime Ace","Comic Sans MS",cursive;
 
   pointer-events: none;
   white-space: nowrap;
@@ -199,16 +158,22 @@
 /* Music control */
 .musicControl {
   position: absolute;
-  left: 85vw;
-  top: 70vh;
-  width: 12vw;
-  height: 12vw;
+
+  left: clamp(72vw, 84vw, 90vw);
+  top: clamp(62vh, 72vh, 85vh);
+
+  width: clamp(80px, 10vw, 160px);
+  height: clamp(80px, 10vw, 160px);
+
   z-index: 11;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 6px;
-  transition: transform 0.4s ease, filter 0.2s ease;
+
+  transition: transform .4s ease, filter .2s ease;
 }
 
 .musicButton {
@@ -384,190 +349,36 @@
 }
 
 /* Responsiveness */
-@media (max-width: 1124px) {
-  .centerGlass { width: 50.5vw; height: 36vh; }
-  .musicControl { left: 84vw; top: 68vh; width: 15vw; }
-  .catButton {
-    top: 1vw;
-    left: 2vw;
-    width: 23vw;
-  }
-     .iconRow {
-    gap: clamp(20px, 2vw, 64px);
-  }
-  .iconRow > * {
-    width: clamp(70px, 2.5vw, 80px);
-    height: clamp(70px, 5.5vw, 96px);
-  }
+
+/* Phone layout */
+
+@media (max-width:480px){
+
+.iconRow{
+  flex-direction: column;
+
+  top: 10vh;
+
+  gap: clamp(38px,4vh,36px);
 }
 
-@media (max-width: 1024px) {
-  .centerGlass { width: 50.5vw; height: 36vh; }
-  .musicControl { left: 74vw; top: 68vh; width: 20vw; }
-  .catButton {
-    top: 1vw;
-    left: 2vw;
-    width: 23vw;
-  }
-     .iconRow {
-    gap: clamp(20px, 2vw, 64px);
-  }
-  .iconRow > * {
-    width: clamp(70px, 2.5vw, 80px);
-    height: clamp(70px, 5.5vw, 96px);
-  }
+.musicControl{
+  left:65vw;
+  top:65vh;
+
+  width:32vw;
+  height:32vw;
 }
 
-@media (max-width: 868px) {
-  .musicControl { left: 74vw; top: 68vh; width: 20vw; }
-  .centerGlass { width: 60.5vw; height: 36vh; }
+.musicLabel{
+  font-size:4.8vw;
+  text-align:center;
 }
 
-@media (max-width: 724px) {
-  .centerGlass { width: 70.5vw; height: 36vh; }
-  .musicControl { left: 74vw; top: 78vh; width: 20vw; }
-
-   .iconRow {
-    gap: clamp(20px, 4vw, 64px);
-  }
-  .iconRow > * {
-    width: clamp(68px, 5.5vw, 80px);
-    height: clamp(60px, 5.5vw, 96px);
-  }
+.closeBee{
+  left:50vw;
 }
 
-@media (max-width: 624px) {
-  .centerGlass { width: 70.5vw; height: 36vh; }
-
-   .iconRow {
-    gap: clamp(20px, 4vw, 64px);
-  }
-  .iconRow > * {
-    width: clamp(60px, 5.5vw, 80px);
-    height: clamp(60px, 5.5vw, 96px);
-  }
-}
-
-@media (max-width: 564px) {
-  .centerGlass { width: 80.5vw; height: 36vh; }
-   .iconRow {
-    gap: clamp(20px, 2vw, 64px);
-  }
-  .iconRow > * {
-    width: clamp(60px, 5.5vw, 80px);
-    height: clamp(60px, 5.5vw, 96px);
-  }
-}
-
-@media (max-width: 464px) {
-  .centerGlass { 
-    top: 6vw;
-    left: 30vw;
-    width: 40vw;
-    height: 74vh;
-    border-radius: 20vw;
-    background-color: lawngreen;
-    opacity: 0.40;
-  }
-   .iconRow {
-    gap: clamp(2px, 5vw, 64px);
-    flex-direction: column;
-    top: 8vh;
-    left: 30%;
-  }
-  .iconRow > * {
-    width: clamp(70px, 5.5vw, 80px);
-    height: clamp(70px, 5.5vw, 96px);
-  }
-  .glassFlowersTop,
-  .glassFlowersBottom,
-  .glassFairy,
-  .FairyCrown,
-  .glassFairyQueen,
-  .FairyQueenCrown,
-  .wallpaperVideo,
-  .catButton {
-    display: none;
-  }
-  /* background animation for phones */
-  /* .wallpaperRoot {
-    --shift: 0%;
-    --speed: 18s;
-
-    background: linear-gradient(
-      120deg,
-      #ff006a,
-      #ff006a,
-      #ffffff,
-      #f834ff,
-      #ff006a
-    );
-
-    background-size: 300% 300%;
-    background-position: var(--shift) 50%;
-    animation: wallpaperFlow var(--speed) ease-in-out infinite;
-    transition: background-position 400ms ease,
-                filter 300ms ease;
-  } */
-
-.wallpaperRoot {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-}
-
-/* rotated background layer */
-.wallpaperRoot::before {
-  content: "";
-  position: absolute;
-
-  width: 100vmax;
-  height: 100vmax;
-  top: 50%;
-  left: 30%;
-
-  background: url("/wallpapers/background.jpeg") no-repeat center;
-  background-size: cover;
-
-  transform: translate(-50%, -50%) rotate(270deg);
-  transform-origin: center;
-
-  z-index: 0;
-  pointer-events: none;
-}
-
-  /* Mobile touch interaction */
-  /* .wallpaperRoot:active {
-    --shift: 55%;
-    filter: brightness(1.1) saturate(1.2);
-    animation: cutePop 320ms ease-out;
-  } */
-  .modalWrapper { animation: windowOpen 0.4s ease-in-out;}
-  .modalWrapper[data-closing="true"] {
-    animation: windowClose 0.4s ease-in-out forwards;
-  }
-  .musicControl,
-  .musicLabel {
-    left: 55vw;
-    top: 65vh;
-    width: 42vw;
-    height: 42vw;
-  }
-  .musicLabel {
-    font-size: 4.9vw;
-    text-align: center;
-  }
-  .closeBee {
-    left: 50vw;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-  }
 }
 
 /* If any child of lotties are taller than screen */
