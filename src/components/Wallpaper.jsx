@@ -14,7 +14,7 @@ import styles from "../styles/home.module.css";
  * - Plays open / close sounds safely
  */
 
-const WALLPAPER_COUNT = 2;
+const WALLPAPER_COUNT = [1,2];
 const FADE_DURATION = 300;
 
 export default function Wallpaper() {
@@ -31,7 +31,7 @@ export default function Wallpaper() {
 
       clearTimeout(fadeTimeoutRef.current);
       fadeTimeoutRef.current = setTimeout(() => {
-        setIndex((prev) => (prev >= WALLPAPER_COUNT ? 1 : prev + 1));
+        setIndex((prev) => (prev % WALLPAPER_COUNT.length) + 1);
         setIsFading(false);
       }, FADE_DURATION);
     };

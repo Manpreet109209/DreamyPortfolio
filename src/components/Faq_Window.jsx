@@ -118,7 +118,7 @@ export default function FaqWindow() {
   const [openIndex, setOpenIndex] = useState(null);
 
   const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+    setOpenIndex(prev => prev === index ? null : index)
   };
 
   return (

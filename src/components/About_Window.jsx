@@ -17,7 +17,7 @@ const AboutWindow = () => {
       pinkFlyRef.current?.play();
       setIsBouncing(true);
     }
-    setIsPlaying(!isPlaying);
+    setIsPlaying(prev => !prev)
   };
 
   return (

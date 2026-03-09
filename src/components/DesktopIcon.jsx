@@ -19,8 +19,6 @@ import styles from "../styles/home.module.css";
  */
 export default function DesktopIcon({
   id,
-  left = "0",
-  top = "0",
   label,
   lottieSrc,
   onOpen
@@ -32,7 +30,6 @@ export default function DesktopIcon({
   return (
     <div
       className={styles.iconWrap}
-      style={{ left, top }}
       data-icon-id={id}
     >
       <button

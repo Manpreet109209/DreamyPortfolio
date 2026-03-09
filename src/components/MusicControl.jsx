@@ -46,7 +46,7 @@ export default function MusicControl() {
       setIsPlaying(true);
     } else {
       audio.pause();
-      audio.currentTime = 0;
+      // audio.currentTime = 0;
       playerRef.current?.pause();
       setIsPlaying(false);
     }
@@ -60,9 +60,9 @@ export default function MusicControl() {
         className={styles.musicButton}
         onClick={toggle}
       >
-        <Player ref={playerRef} autoplay={false} loop src={MusicGirlAnimation} style={{ width: "100%", height: "100%" }} />
+        <Player ref={playerRef} autoplay={false} loop src={MusicGirlAnimation} renderer="svg" style={{ width: "100%", height: "100%" }} />
       </button>
-      <div className={styles.musicLabel}>{isPlaying ? "Music is playing" : "Play Music"}</div>
+      <div className={styles.musicLabel}>{isPlaying ? "♫ Echo of Sadness" : "Click to play"}</div>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 .root {
   width: 100vw;
   min-height: 100dvh;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
   background: black;
   font-family: "Quicksand", sans-serif;
@@ -56,7 +56,7 @@
 
 .catButton:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 0 42px rgba(255, 179, 0, 0.4));
+  filter: drop-shadow(0 0 20px rgba(255, 179, 0, 0.4));
 }
 
 .hiddenImg { display: none; }
@@ -81,8 +81,8 @@
 .iconRow > * {
   position: relative;
 
-  width: clamp(60px, 6vmin, 90px);
-  height: clamp(60px, 6vmin, 100px);
+  width: clamp(70px, 6vmin, 90px);
+  height: clamp(70px, 6vmin, 100px);
 
   display: flex;
   flex-direction: column;
@@ -103,8 +103,8 @@
   border-radius: 20px;
 
   background:
-    radial-gradient(circle at 30% 25%, rgba(255,255,255,0.6), transparent 40%),
-    radial-gradient(circle at 70% 75%, rgba(255,255,255,0.25), transparent 50%),
+    radial-gradient(circle at 30% 25%, rgba(255, 255, 255, 0.223), transparent 40%),
+    radial-gradient(circle at 70% 75%, rgba(255, 255, 255, 0.036), transparent 50%),
     rgba(255,255,255,0.08);
 
   backdrop-filter: blur(6px);
@@ -192,7 +192,7 @@
 
 .musicControl:hover {
   transform: scale(1.08);
-  filter: drop-shadow(0 0 4px rgba(115, 0, 255, 0.4));
+  filter: drop-shadow(0 0 2px rgba(115, 0, 255, 0.4));
 }
 
 /* Modal host */
@@ -219,12 +219,12 @@
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 12px 40px rgba(0,0,0,0.35);
   border: 2px solid rgba(255,255,255,0.25);
-  animation: windowOpen 0.3s ease-in-out;
+  animation: zoomIn 0.3s ease-in-out;
   will-change: transform, opacity;
 }
 
 .modalWrapper[data-closing="true"] {
-  animation: windowClose 0.3s ease-in-out forwards;
+  animation: zoomOut 0.3s ease-in-out forwards;
 }
 
 /* Close bee */
@@ -274,7 +274,7 @@
 
 /* Animations */
 /* old Window opening / closing animation useless for now */
-/* @keyframes zoomIn {
+@keyframes zoomIn {
   from { transform: translate(-50%, -50%) scale(.6); opacity:0; }
   to { transform: translate(-50%, -50%) scale(1); opacity:1; }
 }
@@ -282,7 +282,7 @@
 @keyframes zoomOut {
   from { transform: translate(-50%, -50%) scale(1); opacity:1; }
   to { transform: translate(-50%, -50%) scale(0.6); opacity:0; }
-} */
+}
 
 /* Smooth mobile-friendly window open for desktop / phones*/
 @keyframes windowOpen {
@@ -314,7 +314,7 @@
   50% { transform: translateY(-15px); }
 }
 
-@keyframes floatGlassTop {
+/* @keyframes floatGlassTop {
   0%, 100% { transform: translateX(-50%) rotate(180deg) translateY(0); }
   50% { transform: translateX(-50%) rotate(180deg) translateY(-8px); }
 }
@@ -327,16 +327,16 @@
 @keyframes floatFairy {
   0%, 100% { transform: translateX(-50%) translateY(0); }
   50% { transform: translateX(-50%) translateY(20px); }
-}
+} */
 
 /* Smooth mobile wallaper colors */
-@keyframes wallpaperFlow {
+/* @keyframes wallpaperFlow {
   0%   { background-position:   0% 50%; }
   50%  { background-position: 100% 50%; }
   100% { background-position:   0% 50%; }
-}
+} */
 
-@keyframes cutePop {
+/* @keyframes cutePop {
   0% {
     background-position: 45% 50%;
   }
@@ -346,7 +346,7 @@
   100% {
     background-position: 55% 50%;
   }
-}
+} */
 
 /* Responsiveness */
 
@@ -379,14 +379,17 @@
   left:50vw;
 }
 
+.modalWrapper {
+  animation: windowOpen 0.3s ease-in-out;
+}
+
+.modalWrapper[data-closing="true"] {
+  animation: windowClose 0.3s ease-in-out forwards;
+}
+
 }
 
 /* If any child of lotties are taller than screen */
-.iconRow {
-  max-height: 100%;
-  overflow: visible;
-}
-
 .windowHost {
   max-height: 100%;
 }

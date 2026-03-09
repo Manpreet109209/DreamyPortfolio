@@ -1,8 +1,9 @@
 /* src/App.jsx */
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, lazy } from "react";
 import gsap from "gsap";
-import Home from "./home.jsx";
 import "./App.css";
+
+const Home = lazy(() => import("./home.jsx"))
 
 export default function App() {
   const homeRef = useRef(null);
@@ -13,7 +14,7 @@ export default function App() {
 
     gsap.fromTo(
       homeRef.current,
-      { scale: 1, opacity: 0 },
+      { scale: 0.95, opacity: 0 },
       {
         scale: 1,
         opacity: 1,
