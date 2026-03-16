@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div className={styles.root}>
       <Wallpaper />
-          <button
+          {/* <button
             aria-label="Change wallpaper"
             className={styles.catButton}
             onClick={() => {
@@ -59,7 +59,7 @@ export default function Home() {
             src={SleepingCat}
             style={{ width: "100%", height: "100%" }}
           />
-          </button>
+          </button> */}
 
       {/* Desktop icons row */}
     <div className={styles.iconRow}>

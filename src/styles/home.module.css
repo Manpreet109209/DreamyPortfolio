@@ -1,10 +1,11 @@
 /* src/styles/home.module.css - optimized scoped styles for Home + components */
+/* Anime traveling background */
 .root {
   width: 100vw;
   min-height: 100dvh;
   overflow-x: hidden;
   position: relative;
-  background: black;
+  background: rgb(234, 142, 255);
   font-family: "Quicksand", sans-serif;
   overscroll-behavior: none;
 }
@@ -17,15 +18,13 @@
   overflow: hidden;
 }
 
-.wallpaperVideo {
-  position: absolute;
-  inset: 0;
+.wallpaperImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
-  transition: opacity 0.4s ease-in-out;
-  will-change: opacity;
+
+  user-select: none;
+  pointer-events: none;
 }
 
 /* Cat button */
